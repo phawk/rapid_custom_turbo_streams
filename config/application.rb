@@ -33,5 +33,8 @@ module RapidCustomTurboStreams
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Set Active::Job backend
+    config.active_job.queue_adapter = :sidekiq
   end
 end
