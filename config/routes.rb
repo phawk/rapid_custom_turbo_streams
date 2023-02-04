@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :payments, only: [:new, :create] do
+    get :pending, on: :collection
+    get :success, on: :collection
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root "payments#new"
 end
