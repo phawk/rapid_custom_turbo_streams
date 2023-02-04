@@ -5,7 +5,11 @@ class PaymentsController < ApplicationController
   def create
     ProcessPaymentJob.perform_later
 
-    redirect_to pending_payments_path
+    render turbo_stream: turbo_stream.replace(
+      "payment-form",
+      template: "payments/pending",
+      layout: false
+    )
   end
 
   def pending
